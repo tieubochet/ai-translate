@@ -1,20 +1,16 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Vietnamese AI Translator
 
-# Run and deploy your AI Studio app
+A simple and modern web application for translating text and text within images into Vietnamese, powered by Google's Gemini API.
 
-This contains everything you need to run your app locally.
+## Features
 
-View your app in AI Studio: https://ai.studio/apps/drive/132mBpT82DOaRF2wtAuWQBe63izldoFlL
+-   **Text Translation:** Directly input text for instant translation into Vietnamese.
+-   **Image Translation:** Upload an image (PNG, JPG, etc.), and the app will extract and translate any text it contains.
+-   **Clean UI:** A sleek, user-friendly interface built with React and Tailwind CSS, featuring a tab-based navigation to switch between translation modes.
+-   **Copy to Clipboard:** Easily copy the translated text with a single click.
+-   **Clear Input:** Quickly clear the text input area to start a new translation.
 
-## Run Locally
+## Tech Stack
 
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+-   **Frontend:** React, TypeScript, Tailwind CSS
+-   **AI Model:** Google Gemini API (`gemini-2.5-flash`)
