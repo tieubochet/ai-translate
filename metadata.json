@@ -1,0 +1,5 @@
+{
+  "name": "Vietnamese AI Translator",
+  "description": "An AI-powered application to translate text or text within images into Vietnamese using Google's Gemini API.",
+  "requestFramePermissions": []
+}
