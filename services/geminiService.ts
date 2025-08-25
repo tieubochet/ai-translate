@@ -6,6 +6,15 @@ if (!process.env.API_KEY) {
 
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
+/**
+ * Cleans the translation text by removing asterisks and trimming whitespace.
+ * @param text The text to clean.
+ * @returns The cleaned text.
+ */
+const cleanTranslation = (text: string): string => {
+    return text.replace(/\*/g, '').trim();
+};
+
 export const translateText = async (text: string): Promise<string> => {
     try {
         if (!text.trim()) {
@@ -19,7 +28,7 @@ export const translateText = async (text: string): Promise<string> => {
                 responseMimeType: "text/plain",
             }
         });
-        return response.text;
+        return cleanTranslation(response.text);
     } catch (error) {
         console.error("Error translating text:", error);
         throw new Error("Failed to get translation from API.");
@@ -47,7 +56,7 @@ export const translateImage = async (base64Image: string, mimeType: string): Pro
             }
         });
 
-        return response.text;
+        return cleanTranslation(response.text);
 
     } catch (error) {
         console.error("Error translating image:", error);
