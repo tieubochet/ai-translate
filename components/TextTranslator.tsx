@@ -8,16 +8,7 @@ const Spinner: React.FC = () => (
   </svg>
 );
 
-const BackButton: React.FC<{ onClick: () => void }> = ({ onClick }) => (
-    <button onClick={onClick} className="absolute top-4 left-4 flex items-center gap-2 text-slate-400 hover:text-cyan-400 transition-colors">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-            <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
-        </svg>
-        Quay lại
-    </button>
-);
-
-const TextTranslator: React.FC<{ onBack: () => void }> = ({ onBack }) => {
+const TextTranslator: React.FC = () => {
   const [inputText, setInputText] = useState('');
   const [translation, setTranslation] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -35,7 +26,8 @@ const TextTranslator: React.FC<{ onBack: () => void }> = ({ onBack }) => {
     try {
       const result = await translateText(inputText);
       setTranslation(result);
-    } catch (err) {
+    } catch (err)
+    {
       setError('Đã xảy ra lỗi khi dịch văn bản. Vui lòng thử lại.');
       console.error(err);
     } finally {
@@ -52,9 +44,8 @@ const TextTranslator: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto relative">
-        <BackButton onClick={onBack} />
-        <div className="bg-slate-800/50 border border-slate-700 rounded-2xl p-6 md:p-8 mt-12">
+    <div className="w-full max-w-4xl mx-auto">
+        <div className="bg-slate-800/50 border border-slate-700 border-t-0 rounded-b-2xl p-6 md:p-8">
             <div className="grid md:grid-cols-2 gap-8">
             <div className="flex flex-col">
                 <label htmlFor="input-text" className="text-2xl font-bold text-slate-100 mb-4">Văn bản gốc</label>
