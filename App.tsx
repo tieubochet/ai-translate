@@ -36,13 +36,6 @@ const App: React.FC = () => {
     <main className="min-h-screen w-full bg-slate-900 text-slate-100 flex flex-col items-center p-4 font-sans relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(29,78,216,0.15)_0,_transparent_40%)]"></div>
       <div className="z-10 flex flex-col items-center w-full max-w-4xl">
-        <header className="text-center my-8 md:my-12">
-            <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
-              Dịch Nội Dung Sang Tiếng Việt
-            </h1>
-            <p className="mt-4 text-lg text-slate-400">Dịch văn bản và hình ảnh một cách dễ dàng</p>
-        </header>
-        
         <div className="w-full">
             <div className="flex border-b border-slate-700">
                 <TabButton 
