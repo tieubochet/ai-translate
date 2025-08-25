@@ -1,4 +1,3 @@
-
 import React, { useState, useCallback, useRef } from 'react';
 import { translateImage } from '../services/geminiService';
 
@@ -24,6 +23,7 @@ const ImageTranslator: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   const [translation, setTranslation] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const [isCopied, setIsCopied] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const fileToBase64 = (file: File): Promise<{ base64: string; mimeType: string }> =>
@@ -73,6 +73,14 @@ const ImageTranslator: React.FC<{ onBack: () => void }> = ({ onBack }) => {
     }
   }, [imageFile]);
   
+  const handleCopy = () => {
+    if (translation) {
+        navigator.clipboard.writeText(translation);
+        setIsCopied(true);
+        setTimeout(() => setIsCopied(false), 2000);
+    }
+  };
+
   const triggerFileSelect = () => fileInputRef.current?.click();
 
   return (
@@ -115,7 +123,28 @@ const ImageTranslator: React.FC<{ onBack: () => void }> = ({ onBack }) => {
           </div>
           
           <div className="flex flex-col">
-            <h2 className="text-2xl font-bold text-slate-100 mb-4">Bản dịch (Tiếng Việt)</h2>
+            <div className="flex justify-between items-center mb-4">
+                <h2 className="text-2xl font-bold text-slate-100">Bản dịch (Tiếng Việt)</h2>
+                {translation && (
+                    <button 
+                        onClick={handleCopy}
+                        className="flex items-center gap-2 px-3 py-1 text-sm rounded-md bg-slate-700/50 text-slate-300 hover:bg-slate-700 hover:text-cyan-300 transition-all disabled:opacity-50 disabled:cursor-default"
+                        disabled={isCopied}
+                    >
+                    {isCopied ? (
+                        <>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                            <span>Đã chép!</span>
+                        </>
+                    ) : (
+                        <>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                            <span>Chép</span>
+                        </>
+                    )}
+                    </button>
+                )}
+            </div>
             <div className="flex-grow bg-slate-900 border border-slate-700 rounded-xl p-4 min-h-[250px]">
                 {error && <p className="text-red-400">{error}</p>}
                 <p className="text-slate-200 whitespace-pre-wrap">{translation}</p>

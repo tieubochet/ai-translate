@@ -45,7 +45,7 @@ export const translateImage = async (base64Image: string, mimeType: string): Pro
         };
 
         const textPart = {
-            text: "Đóng vai trò là một chuyên gia dịch thuật. Trích xuất bất kỳ văn bản nào từ hình ảnh này và chỉ cung cấp bản dịch tiếng Việt. Không bao gồm văn bản gốc hay bất kỳ lời giải thích nào. Nếu không có văn bản nào trong ảnh, hãy trả lời 'Không tìm thấy văn bản nào trong ảnh.'",
+            text: "Đóng vai trò là một chuyên gia dịch thuật có kiến thức về Sinh học. Trích xuất bất kỳ văn bản nào từ hình ảnh này và chỉ cung cấp bản dịch tiếng Việt với văn phong học thuật, chính xác. Không bao gồm văn bản gốc hay bất kỳ lời giải thích nào. Nếu không có văn bản nào trong ảnh, hãy trả lời 'Không tìm thấy văn bản nào trong ảnh.'",
         };
 
         const response = await ai.models.generateContent({
