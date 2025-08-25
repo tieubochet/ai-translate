@@ -42,6 +42,12 @@ const TextTranslator: React.FC = () => {
         setTimeout(() => setIsCopied(false), 2000);
     }
   };
+  
+  const handleClear = () => {
+    setInputText('');
+    setTranslation('');
+    setError('');
+  };
 
   return (
     <div className="w-full max-w-4xl mx-auto">
@@ -49,13 +55,27 @@ const TextTranslator: React.FC = () => {
             <div className="grid md:grid-cols-2 gap-8">
             <div className="flex flex-col">
                 <label htmlFor="input-text" className="text-2xl font-bold text-slate-100 mb-4">Văn bản gốc</label>
-                <textarea
-                id="input-text"
-                value={inputText}
-                onChange={(e) => setInputText(e.target.value)}
-                placeholder="Nhập văn bản của bạn ở đây..."
-                className="flex-grow w-full bg-slate-900 border border-slate-700 rounded-xl p-4 text-slate-200 resize-none focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-shadow min-h-[300px]"
-                />
+                <div className="relative flex-grow">
+                    <textarea
+                        id="input-text"
+                        value={inputText}
+                        onChange={(e) => setInputText(e.target.value)}
+                        placeholder="Nhập văn bản của bạn ở đây..."
+                        className="w-full h-full bg-slate-900 border border-slate-700 rounded-xl p-4 pr-10 text-slate-200 resize-none focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-shadow min-h-[300px]"
+                    />
+                    {inputText && (
+                        <button 
+                            onClick={handleClear}
+                            className="absolute top-3 right-3 p-1 rounded-full text-slate-400 hover:text-white hover:bg-slate-700 transition-all duration-200"
+                            aria-label="Xóa văn bản"
+                            title="Xóa văn bản"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    )}
+                </div>
             </div>
             <div className="flex flex-col">
                 <div className="flex justify-between items-center mb-4">
