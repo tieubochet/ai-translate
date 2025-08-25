@@ -81,7 +81,7 @@ const App: React.FC = () => {
         {mode === TranslationMode.SELECT && (
           <header className="text-center mb-12">
             <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
-              Trình dịch AI Việt
+              Web App Dịch Nội Dung Sang Tiếng Việt
             </h1>
             <p className="mt-4 text-lg text-slate-400">Chọn phương thức dịch của bạn</p>
           </header>
